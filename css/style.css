@@ -172,50 +172,60 @@ body {
 .vs1 {
     display: none;
 }
-.dase-bandi {
-    display: flex;
-    direction: ltr;
-    position: relative;
-    width: 70%;
-    min-height: 80vh;
-    background: white;
-    right: 5%;
+.dase-bandi{
+    position: fixed;
     visibility: hidden;
-    overflow: auto;
+    right: 5%;
+    overflow: hidden;
+    display: flex;
+    direction: rtl;
+    width: 70%;
+    height: 80%;
     box-shadow: 0 5px 5px rgba(0,0,0,.14), 0 2px 0 rgba(0,0,0,.05);
 }
 
-.name-kala {
+.name-kala2,
+.name-kala{
     display: flex;
-    position: absolute;
-    overflow: auto;
-    height: 100%;
-    width: auto;
-    background: white;
-    right: 0;
-    top: 0;
-}
-.name-kala .text-kala{
-    display: flex;
-    direction: rtl;
-    align-items: center;
-    background: #f0f0f1;
+    direction: ltr;
     cursor: pointer;
-    padding: 25px 10px;
+    overflow: auto;
+    width: auto;
 }
 
-.name-kala .text-kala:hover{
+.dase-bandi ul{
+    display: block;
+    text-align: right;
+    list-style-type: none;
+}
+
+.name-kala3{
+    line-height: 30px;
+    padding-right: 5px;
+}
+
+.name-kala3 ul li{
+    font-size: 12px;
+    line-height: 40px;
+}
+
+
+.dase-bandi .text-kala{
+    background: #f0f0f1;
+    padding: 15px 10px;
+    font-size: 13px;
+}
+.dase-bandi ul li:hover{
     background: white;
     color: red;
 }
-.name-kala2{
-    position: absolute;
-    overflow: auto;
-    background: #0f6674;
-    height: 100%;
-    right: 20%;
-}
 
+.font-weight-bold{
+    border-right: 2px solid red;
+    padding-right: 5px;
+    padding-top: 5px;
+    font-size: 12px;
+}
 
 @media screen and (max-width: 1100px) {
     .gps {
