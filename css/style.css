@@ -4,7 +4,6 @@
     margin: 0;
     box-sizing: border-box;
 }
-
 body {
     font-family: SansSerif, sans-serif;
     display: flex;
@@ -172,6 +171,7 @@ body {
 .vs1 {
     display: none;
 }
+
 .dase-bandi{
     position: fixed;
     visibility: hidden;
@@ -184,8 +184,9 @@ body {
     box-shadow: 0 5px 5px rgba(0,0,0,.14), 0 2px 0 rgba(0,0,0,.05);
 }
 
-.name-kala2,
-.name-kala{
+.daste-mobile,
+.name-kala,
+.daste-book{
     display: flex;
     direction: ltr;
     cursor: pointer;
@@ -268,5 +269,9 @@ body {
     .search label img{
         display: flex;
     }
+}
+#active{
+    background: white;
+    color: red;
 }
 
