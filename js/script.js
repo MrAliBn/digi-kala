@@ -3,6 +3,8 @@ let list = $('.list')
 let modal = $('.modall')
 let back_icon = $('#back-icon')
 let search_icon = $('#search-icon')
+let element = $('.form-story')[0];
+let scrollLeftMax = element.scrollWidth - element.clientWidth;
 $(document).ready(function(){
      var lastScrollTop = 0;
      var mobileElements;
@@ -14,16 +16,19 @@ $(document).ready(function(){
          }
      });
 
+
     $(window).scroll(function() {
         var scrollTop = $(this).scrollTop();
 
 
         if (scrollTop > lastScrollTop) {
             $('.nav-bottom').hide();
+            $('.logo-search').addClass('box-shadow')
         }
 
         else {
             $('.nav-bottom').slideDown();
+            $('.logo-search').removeClass('box-shadow')
         }
 
         lastScrollTop = scrollTop;
@@ -80,7 +85,11 @@ $(document).ready(function(){
             })
              $('.pr-0').on('mouseenter', function() {
                 $('#r').css('visibility', 'visible');
-                $('#daste-container').empty().load('mobile.html');
+                if ($("#active.mobile").length > 0) {
+                    $('#daste-container').empty().load('mobile.html');
+                }else {
+                     $('#daste-container').empty().load('book.html');
+                }
                 $('body').css('overflow', 'hidden');
                 modal.css('height', '900%');
                 modal.slideUp();
@@ -118,14 +127,96 @@ $(document).ready(function(){
                $("#daste-container").empty();
            });
 
+           $('.form-story').scroll(function() {
+                let scrollLeft = $(this).scrollLeft();
+                let scrollWidth = $(this)[0].scrollWidth;
+                let clientWidth = $(this)[0].clientWidth;
+
+                if (scrollLeft <= 0) {
+                    $('#scroll-left').hide(); //
+                    $('#scroll-right').show(); //
+                } else if (scrollLeft + clientWidth >= scrollWidth) {
+                    $('#scroll-right').hide();
+                    $('#scroll-left').show();
+                } else {
+                    $('#scroll-left').show();
+                    $('#scroll-right').show();
+                }
+            });
+
            $('#scroll-right').on('click', function() {
-               $('.container').animate({
+               $('.form-story').animate({
                    scrollLeft: '+=200'
                }, 'slow');
+
            });
            $('#scroll-left').on('click', function() {
-               $('.container').animate({
+               $('.form-story').animate({
                    scrollLeft: '-=200'
            }, 'slow');
            });
+
+           $('.haraj-1').scroll(function() {
+                let scrollLeft = $(this).scrollLeft();
+                let scrollWidth = $(this)[0].scrollWidth;
+                let clientWidth = $(this)[0].clientWidth;
+
+                if (scrollLeft <= 0) {
+                    $('#scroll-left-haraj').hide(); //
+                    $('#scroll-right-haraj').show(); //
+                } else if (scrollLeft + clientWidth >= scrollWidth) {
+                    $('#scroll-right-haraj').hide();
+                    $('#scroll-left-haraj').show();
+                } else {
+                    $('#scroll-left-haraj').show();
+                    $('#scroll-right-haraj').show();
+                }
+            });
+
+            $('#scroll-right-haraj').on('click', function() {
+               $('.haraj-1').animate({
+                   scrollLeft: '+=200'
+               }, 'slow');
+           });
+           $('#scroll-left-haraj').on('click', function() {
+               $('.haraj-1').animate({
+                   scrollLeft: '-=200'
+           }, 'slow');
+           });
+
+function startTimer(duration, display) {
+    let timer = duration, hours, minutes, seconds;
+    setInterval(function () {
+        hours = parseInt(timer / 3600, 10);
+        minutes = parseInt((timer % 3600) / 60, 10);
+        seconds = parseInt(timer % 60, 10);
+
+        hours = hours < 10 ? "0" + hours : hours;
+        minutes = minutes < 10 ? "0" + minutes : minutes;
+        seconds = seconds < 10 ? "0" + seconds : seconds;
+
+        display.querySelector("#hours").textContent = hours;
+        display.querySelector("#minutes").textContent = minutes;
+        display.querySelector("#seconds").textContent = seconds;
+
+        // ذخیره زمان باقی‌مانده در local storage
+        localStorage.setItem('timer', timer);
+
+        if (--timer < 0) {
+            timer = duration;
+        }
+    }, 1000);
+}
+
+window.onload = function () {
+    const oneHour = 60 * 60 * 8;
+    const display = document.querySelector('#timer');
+
+
+    // بررسی وجود مقدار timer در local storage
+    let savedTimer = localStorage.getItem('timer');
+    let initialTimer = savedTimer ? parseInt(savedTimer) : oneHour;
+
+    startTimer(initialTimer, display);
+};
 })
