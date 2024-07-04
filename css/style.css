@@ -554,6 +554,19 @@
 .mahbob{
     border-radius: 20px;
 }
+.frosh1 {
+    display: flex;
+    margin: 10px;
+    overflow: hidden;
+    height: auto;
+}
+
+.div-frosh{
+    display: flex;
+    direction: rtl;
+    background: red;
+}
+
 
 @media screen and (max-width: 1100px) {
     .gps {
