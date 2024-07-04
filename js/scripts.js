@@ -127,62 +127,42 @@ $(document).ready(function(){
                $("#daste-container").empty();
            });
 
-           $('.form-story').scroll(function() {
+           function setupScroll(containerSelector, scrollLeftButton, scrollRightButton) {
+            $(containerSelector).scroll(function() {
                 let scrollLeft = $(this).scrollLeft();
                 let scrollWidth = $(this)[0].scrollWidth;
                 let clientWidth = $(this)[0].clientWidth;
 
                 if (scrollLeft <= 0) {
-                    $('#scroll-left').hide(); //
-                    $('#scroll-right').show(); //
+                    $(scrollLeftButton).hide();
+                    $(scrollRightButton).show();
                 } else if (scrollLeft + clientWidth >= scrollWidth) {
-                    $('#scroll-right').hide();
-                    $('#scroll-left').show();
+                    $(scrollRightButton).hide();
+                    $(scrollLeftButton).show();
                 } else {
-                    $('#scroll-left').show();
-                    $('#scroll-right').show();
+                    $(scrollLeftButton).show();
+                    $(scrollRightButton).show();
                 }
             });
 
-           $('#scroll-right').on('click', function() {
-               $('.form-story').animate({
-                   scrollLeft: '+=200'
-               }, 'slow');
-
-           });
-           $('#scroll-left').on('click', function() {
-               $('.form-story').animate({
-                   scrollLeft: '-=200'
-           }, 'slow');
-           });
-
-           $('.haraj-3').scroll(function() {
-                let scrollLeft = $(this).scrollLeft();
-                let scrollWidth = $(this)[0].scrollWidth;
-                let clientWidth = $(this)[0].clientWidth;
-
-                if (scrollLeft <= 0) {
-                    $('#scroll-left2').hide(); //
-                    $('#scroll-right2').show(); //
-                } else if (scrollLeft + clientWidth >= scrollWidth) {
-                    $('#scroll-right2').hide();
-                    $('#scroll-left2').show();
-                } else {
-                    $('#scroll-left2').show();
-                    $('#scroll-right2').show();
-                }
+            $(scrollRightButton).on('click', function() {
+                $(containerSelector).animate({
+                    scrollLeft: '+=200'
+                }, 'slow');
             });
 
-            $('#scroll-right2').on('click', function() {
-               $('.haraj-3').animate({
-                   scrollLeft: '+=200'
-               }, 'slow');
-           });
-           $('#scroll-left2').on('click', function() {
-               $('.haraj-3').animate({
-                   scrollLeft: '-=200'
-           }, 'slow');
-           });
+            $(scrollLeftButton).on('click', function() {
+                $(containerSelector).animate({
+                    scrollLeft: '-=200'
+                }, 'slow');
+            });
+        }
+
+        // فراخوانی برای عناصر مختلف
+        setupScroll('.form-story', '#scroll-left', '#scroll-right');
+        setupScroll('.haraj-1', '#scroll-left-haraj', '#scroll-right-haraj');
+        setupScroll('.haraj-3', '#scroll-left2', '#scroll-right2');
+
 
 
 function startTimer(duration, display) {
