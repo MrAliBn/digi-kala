@@ -180,7 +180,6 @@ function startTimer(duration, display) {
         display.querySelector("#minutes").textContent = minutes;
         display.querySelector("#seconds").textContent = seconds;
 
-        // ذخیره زمان باقی‌مانده در local storage
         localStorage.setItem('timer', timer);
 
         if (--timer < 0) {
@@ -193,8 +192,6 @@ window.onload = function () {
     const oneHour = 60 * 60 * 8;
     const display = document.querySelector('#timer');
 
-
-    // بررسی وجود مقدار timer در local storage
     let savedTimer = localStorage.getItem('timer');
     let initialTimer = savedTimer ? parseInt(savedTimer) : oneHour;
 

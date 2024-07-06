@@ -199,11 +199,11 @@
     transition: 0s 0.3s;
 }
 
-.font-weight-bold{
+.bold-border{
     border-right: 2px solid red;
     padding-right: 5px;
     padding-top: 5px;
-    font-size: 12px;
+    font-size: 15px;
 }
 .form-story {
     overflow-x: hidden;
@@ -353,7 +353,6 @@
 .image-haraj {
     width: 125px;
     height: 126px;
-    margin: 5px;
     overflow: hidden;
     padding: 2px;
     cursor: pointer;
@@ -554,19 +553,80 @@
 .mahbob{
     border-radius: 20px;
 }
-.frosh1 {
+.frosh2 {
     display: flex;
-    margin: 10px;
     overflow: hidden;
     height: auto;
+    padding: 10px;
+    border-radius: 20px;
 }
 
 .div-frosh{
+    text-align: right;
+}
+.img-frosh{
     display: flex;
-    direction: rtl;
-    background: red;
+    flex-wrap: wrap;
+}
+.a{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #2dc4d7;
+    cursor: pointer;
+}
+.a:hover{
+    text-decoration: none;
+    color: #2dc4d7;
 }
 
+.background{
+    background: #017396;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    direction: rtl;
+    padding: 10px;
+}
+.mission{
+    display: flex;
+    direction: ltr;
+    margin: 5px;
+}
+.mission img{
+    width: 150px;
+    height: 60px;
+    object-fit: cover;
+    margin: 5px;
+}
+.t{
+    margin-top: 10px;
+}
+.t img{
+    border-radius: 10px;
+    width: 100%;
+}
+.head-footer{
+    text-align: right;
+}
+.tag-footer{
+    display: flex;
+    direction: rtl;
+}
+.f {
+    font-size: 12px;
+    line-height: 20px;
+}
+.img-footer{
+    display: flex;
+}
+.txt-right{
+    text-align: right;
+}
+#accordion{
+    display: none;
+}
 
 @media screen and (max-width: 1100px) {
     .gps {
@@ -589,6 +649,9 @@
     .right{
         right: 5%;
     }
+    .font{
+        font-size: 12px;
+    }
 }
 
 @media (max-width: 1025px) {
@@ -598,12 +661,14 @@
     .vs1,
     .text-logsig,
     .gps,
-    .logo1{
+    .logo1,
+    .img-footer,
+    .text-footer{
         display: none;
     }
     .frosh {
-        flex-wrap: wrap; /* برای چیدن عناصر به صورت چند ردیف */
-        height: auto; /* تنظیم مجدد ارتفاع */
+        flex-wrap: wrap;
+        height: auto;
         margin-top: 15px;
     }
     .form-img-haraj{
@@ -616,7 +681,7 @@
     }
 
     .img-big {
-        width: calc(50% - 8px); /* نصف عرض والد بعلاوه فاصله */
+        width: calc(50% - 8px);
     }
     .logo-search{
         width: 99%;
@@ -640,6 +705,15 @@
     }
     .right{
         right: 15%;
+    }
+    .font{
+        font-size: 11px;
+    }
+    .f{
+        font-size: 15px;
+    }
+    #accordion{
+        display: block;
     }
 }
 #active{
